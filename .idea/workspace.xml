@@ -5,18 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bebe97f3-9a4d-4fd1-8eb4-dd31271fae56" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/week4/generics/CallableService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/GeneralProgramming/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/GeneralProgramming/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/JavaBasics/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/JavaBasics/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week2/ClassesAndInterfaces/Exe2/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week2/ClassesAndInterfaces/Exe2/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/week4/generics/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week4/generics/Client.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -30,16 +33,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/learning/Alpha Team Learning/Automation",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/learning/Alpha Team Learning/Automation&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
