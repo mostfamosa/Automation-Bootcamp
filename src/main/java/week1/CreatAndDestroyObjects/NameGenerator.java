@@ -1,7 +1,7 @@
 package week1.CreatAndDestroyObjects;
 
 import java.util.ArrayList;
-import static Automation.src.week1.Generator.generateUniqueIndexes;
+import static week1.Generator.generateUniqueIndexes;
 
 public class NameGenerator {
     private String[] names;

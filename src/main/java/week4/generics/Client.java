@@ -1,5 +1,6 @@
-package Automation.src.week4.generics;
-import Automation.src.week1.Generator;
+package week4.generics;
+import week1.Generator;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ThreadLocalRandom;
 

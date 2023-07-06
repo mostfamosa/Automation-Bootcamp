@@ -1,6 +1,6 @@
 package week2.ClassesAndInterfaces.Exe2;
 
-import Automation.src.week2.ClassesAndInterfaces.Exe2.TheFarm.Farmer;
+import week2.ClassesAndInterfaces.Exe2.TheFarm.Farmer;
 
 public class Client {
     public static void main(String[] args) {

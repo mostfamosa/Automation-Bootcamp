@@ -1,6 +1,6 @@
 package week1.CreatAndDestroyObjects;
 
-import Automation.src.week1.Generator;
+import week1.Generator;
 
 import java.util.ArrayList;
 

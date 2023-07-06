@@ -1,6 +1,6 @@
 package week1.GeneralProgramming;
 
-import Automation.src.week1.Generator;
+import week1.Generator;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,7 +28,7 @@ public class Team {
 
 
         //unique random real names for team players
-        ArrayList<String> realNames = Automation.src.week1.Generator.generateRandomRealNames(numberOfPlayers);
+        ArrayList<String> realNames = Generator.generateRandomRealNames(numberOfPlayers);
 
         //unique Jersey number
         Team myTeam = new Team(numberOfPlayers);
