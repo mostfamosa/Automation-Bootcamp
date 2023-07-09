@@ -1,4 +1,4 @@
-package Automation.src.week3.Methods;
+package week3.Methods;
 
 import java.util.ArrayList;
 import java.util.Date;

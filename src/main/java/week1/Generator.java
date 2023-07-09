@@ -2,7 +2,10 @@ package week1;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
 
 public class Generator {
     //unique list of number
@@ -28,13 +31,20 @@ public class Generator {
         return rnd.nextBoolean();
     }
 
+    public static Date generateRandomeDate(int beforeInDays,int afterInDaye) {
+        long aDay = TimeUnit.DAYS.toMillis(1);
+        long now = new Date().getTime();
+
+        //random Date (from beforeInDays to afterInDaye)
+        return new Date((now - aDay * beforeInDays) + aDay * ThreadLocalRandom.current().nextInt(afterInDaye));
+    }
 
     public static ArrayList<String> generateRandomRealNames(int limit) {
 
         //unique String
-        String[] realNames={"Shai","Mostafa","khader","Assaf","Sagi","Lion","Lior","Jamal","Moshe","David","Michel","Joey","Barney","Ted","James","Samer","Zeev"};
+        String[] realNames = {"Shai", "Mostafa", "khader", "Assaf", "Sagi", "Lion", "Lior", "Jamal", "Moshe", "David", "Michel", "Joey", "Barney", "Ted", "James", "Samer", "Zeev"};
 
-        ArrayList<Integer> indexOfNames = generateRandomUniqueNumbers(realNames.length-1, limit);
+        ArrayList<Integer> indexOfNames = generateRandomUniqueNumbers(realNames.length - 1, limit);
 
         ArrayList<String> result = new ArrayList<>();
         for (int i = 0; i < limit; i++) {
@@ -43,24 +53,24 @@ public class Generator {
         return result;
     }
 
-    public static ArrayList<Integer> generateRandomUniqueNumbers(int limit,int howMany) {
+    public static ArrayList<Integer> generateRandomUniqueNumbers(int limit, int howMany) {
         for (int i = 1; i < limit; i++)
             listOfNumbers.add(i);
         Collections.shuffle(listOfNumbers);
         ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int i = 0; i <howMany ; i++) {
+        for (int i = 0; i < howMany; i++) {
             result.add(listOfNumbers.get(i));
         }
         listOfNumbers.clear();
         return result;
     }
 
-    public static ArrayList<Integer> generateUniqueIndexes(int limit,int howMany) {
+    public static ArrayList<Integer> generateUniqueIndexes(int limit, int howMany) {
         for (int i = 1; i < limit; i++)
             listOfNumbers.add(i);
         Collections.shuffle(listOfNumbers);
         ArrayList<Integer> result = new ArrayList<Integer>();
-        for (int i = 0; i <howMany ; i++) {
+        for (int i = 0; i < howMany; i++) {
             result.add(listOfNumbers.get(i));
         }
         listOfNumbers.clear();
