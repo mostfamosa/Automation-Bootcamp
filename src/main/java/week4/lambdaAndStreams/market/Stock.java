@@ -4,6 +4,7 @@ import week1.Generator;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.Collectors;
 
 public class Stock {
     private List<Item> itemsList = new ArrayList<>();
@@ -12,7 +13,6 @@ public class Stock {
         for (int i = 0; i < 10; i++) {
             generateRandomItem();
         }
-        itemsList = itemsList.stream().sorted(Comparator.comparing(Item::getExpirationDate)).toList();
     }
 
     //Generate item and add to list.
@@ -20,7 +20,9 @@ public class Stock {
         String itemName = Generator.generateRandomRealNames(1).get(0);
         Date randomDate = Generator.generateRandomeDate(5, 9);
         int randomWeight = ThreadLocalRandom.current().nextInt(100);
-        itemsList.add(new Item(itemName, randomDate, randomWeight, Item.type.getRandomType()));
+        Item newItem = new Item(itemName, randomDate, randomWeight, Item.type.getRandomType());
+        itemsList.add(newItem);
+        itemsList.sort(Comparator.comparing(Item::getExpirationDate));
     }
 
     //Get a list of expired items.
@@ -30,12 +32,11 @@ public class Stock {
     }
 
     //Get the item with the closest expiry date.
-    public Item getClosestExpiredItems() {
+    public Optional<Item> getClosestExpiredItems() {
         Date now = new Date(new Date().getTime());
         return itemsList.stream()
                 .filter(item -> item.getExpirationDate().after(now))
-                .min(Comparator.comparing(Item::getExpirationDate))
-                .orElse(null);
+                .min(Comparator.comparing(Item::getExpirationDate));
     }
 
     //Get a list of items sorted alphabetically.
@@ -44,10 +45,10 @@ public class Stock {
     }
 
     //Get one item by name.
-    public Item getItemByName(String itemName) {
+    public Optional<Item> getItemByName(String itemName) {
         return itemsList.stream()
                 .filter(item -> itemName.equals(item.getName()))
-                .findFirst().orElse(null);
+                .findFirst();
     }
 
     //Get a list of names of items above a certain weight.
@@ -66,7 +67,11 @@ public class Stock {
 
     @Override
     public String toString() {
-        return "itemsList=\n" + itemsList;
+        StringBuilder s = new StringBuilder();
+        for (Item item : itemsList) {
+            s.append(item);
+        }
+        return "itemsList=\n" + s;
 
     }
 }
