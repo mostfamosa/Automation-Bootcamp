@@ -22,6 +22,7 @@ public class Stock {
         int randomWeight = ThreadLocalRandom.current().nextInt(100);
         Item newItem = new Item(itemName, randomDate, randomWeight, Item.type.getRandomType());
         itemsList.add(newItem);
+        //?????????itemsList=itemsList.stream().sorted(Comparator.comparing(Item::getExpirationDate)).toList();
         itemsList.sort(Comparator.comparing(Item::getExpirationDate));
     }
 
@@ -60,9 +61,10 @@ public class Stock {
 
     //Get a hash map of <type, Integer> to sum all the items according to their type.
     public Map<Item.type, Integer> sumStockItems() {
-        Map<Item.type, Integer> res = new HashMap<>();
-        itemsList.forEach(entry -> res.put(entry.getItemType(), (int) itemsList.stream().filter(item -> item.getItemType().equals(entry.getItemType())).count()));
-        return res;
+        //Map<Item.type, Integer> res = new HashMap<>();
+        //itemsList.forEach(item1 -> res.put(item1.getItemType(), (int) itemsList.stream().filter(item -> item.getItemType().equals(item1.getItemType())).count()));
+        //return res;
+        return itemsList.stream().collect(Collectors.groupingBy(Item::getItemType, Collectors.summingInt(e -> 1)));
     }
 
     @Override
