@@ -1,125 +1,93 @@
 package week1.CreatAndDestroyObjects;
 
 public class Player {
-    enum positions {GOALKEEPER,DEFENDER,ATTACKER,MIDFIELDER}
-    private int jerseyNumber;
-    private int grade;
-    private String name;
-    private String position;
 
-    public Player(int jerseyNumber, String name, int grade) {
-        this.jerseyNumber = jerseyNumber;
-        this.name = name;
-        this.grade = grade;
-    }
-    public Player() {
+    private String mName;
+    private int mGrade;
+    private Position mPos;
+    private int mNumber;
 
-    }
-
-    public static Player createGkPlayer(int grade,int jerseyNumber,String name){
-        Player player = new Player();
-        player.setGrade(grade);
-        player.setJerseyNumber(jerseyNumber);
-        player.setName(name);
-        player.setPosition(positions.GOALKEEPER.toString());
-        return player;
+    /**
+     * Constructor to create player object
+     *
+     * @param aName
+     * @param aGrade
+     * @param position
+     * @param aNumber
+     */
+    private Player(String aName, int aGrade, Position position, int aNumber) {
+        this.mName = aName;
+        this.mGrade = aGrade;
+        this.mPos = position;
+        this.mNumber = aNumber;
     }
 
-    public static Player createDefenderPlayer(int grade,int jerseyNumber,String name){
-        Player player = new Player();
-        player.setGrade(grade);
-        player.setJerseyNumber(jerseyNumber);
-        player.setName(name);
-        player.setPosition(positions.DEFENDER.toString());
-        return player;
+    public static Player newPlayer(String aName, int aGrade, Position position, int aNumber) {
+        return new Player(aName, aGrade, position, aNumber);
     }
 
-    public static Player createAttackerPlayer(int grade,int jerseyNumber,String name){
-        Player player = new Player();
-        player.setGrade(grade);
-        player.setJerseyNumber(jerseyNumber);
-        player.setName(name);
-        player.setPosition(positions.ATTACKER.toString());
-        return player;
+    /**
+     * Add static factory methods to the Player class to enable creating different type of players.
+     *
+     * @param name
+     * @param grade
+     * @param number
+     * @return
+     */
+    public static Player createGoalKeeper(String name, int grade, int number) {
+        return new Player(name, grade, Position.GOALKEEPER, number);
     }
 
-    public static Player createMidfielderPlayer(int grade,int jerseyNumber,String name){
-        Player player = new Player();
-        player.setGrade(grade);
-        player.setJerseyNumber(jerseyNumber);
-        player.setName(name);
-        player.setPosition(positions.MIDFIELDER.toString());
-        return player;
+    public static Player createDefender(String name, int grade, int number) {
+        return new Player(name, grade, Position.DEFENDER, number);
     }
 
-    public static  Player createPlayerWithNoJerseyNum(int grade,String name,String position){
-        Player player = new Player();
-        player.setGrade(grade);
-        player.setName(name);
-        player.setPosition(position);
-        return player;
-    }
-    public static  Player createPlayerWithNoGrade(int jerseyNumber,String name,String position){
-        Player player = new Player();
-        player.setJerseyNumber(jerseyNumber);
-        player.setName(name);
-        player.setPosition(position);
-        return player;
-    }
-    public static  Player createPlayerWithNoName(int jerseyNumber,int grade,String position){
-        Player player = new Player();
-        player.setJerseyNumber(jerseyNumber);
-        player.setGrade(grade);
-        player.setPosition(position);
-        return player;
-    }
-    public static  Player createPlayerWithNoPosition(int jerseyNumber,int grade,String name){
-        Player player = new Player();
-        player.setJerseyNumber(jerseyNumber);
-        player.setGrade(grade);
-        player.setName(name);
-        return player;
-    }
-    public String getPosition() {
-        return position;
+    public static Player createMidfielder(String name, int grade, int number) {
+        return new Player(name, grade, Position.MIDFIELDER, number);
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public static Player createAttacker(String name, int grade, int number) {
+        return new Player(name, grade, Position.ATTACKER, number);
+    }
+
+    /**
+     * getters and setters
+     */
+    public String getName() {
+        return mName;
+    }
+
+    public void setName(String mName) {
+        if (mName == null)
+            throw new IllegalArgumentException("The Name Cannot Be Null!");
+        this.mName = mName;
     }
 
     public int getGrade() {
-        return grade;
+        return mGrade;
     }
 
-    public void setGrade(int grade) {
-        this.grade = grade;
+    public void setGrade(int mGrade) {
+        if (mGrade > 100 || mGrade < 0)
+            throw new IllegalArgumentException("The Grade Must Be Between 0-100");
+        this.mGrade = mGrade;
     }
 
-    public int getJerseyNumber() {
-        return jerseyNumber;
+    public Position getPosition() {
+        return mPos;
     }
 
-    public void setJerseyNumber(int jerseyNumber) {
-        this.jerseyNumber = jerseyNumber;
+    public void setPosition(Position mPos) {
+        this.mPos = mPos;
     }
 
-    public String getName() {
-        return name;
+    public int getNumber() {
+        return mNumber;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setmNumber(int mNumber) {
+        if (mNumber < 0)
+            throw new IllegalArgumentException("Jersey Number Can't Be Negative!");
+        this.mNumber = mNumber;
     }
-
-    @Override
-    public String toString() {
-        return "Player{" +
-                "jerseyNumber=" + jerseyNumber +
-                ", grade=" + grade +
-                ", name='" + name + '\'' +
-                ", position='" + position + '\'' +
-                '}'+'\n';
-    }
-
 }

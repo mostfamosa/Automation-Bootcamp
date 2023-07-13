@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bebe97f3-9a4d-4fd1-8eb4-dd31271fae56" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Position.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/PlayerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/TeamTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Utils.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +50,87 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
+  <component name="RunManager" selected="JUnit.All in Automation">
+    <configuration name="All in Automation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="week1.CreatAndDestroyObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="week1.CreatAndDestroyObjects" />
+      <option name="MAIN_CLASS_NAME" value="week1.CreatAndDestroyObjects.PlayerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="week1.CreatAndDestroyObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="week1.CreatAndDestroyObjects" />
+      <option name="MAIN_CLASS_NAME" value="week1.CreatAndDestroyObjects.TeamTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TeamTest.create_Team_Formation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="week1.CreatAndDestroyObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="week1.CreatAndDestroyObjects" />
+      <option name="MAIN_CLASS_NAME" value="week1.CreatAndDestroyObjects.TeamTest" />
+      <option name="METHOD_NAME" value="create_Team_Formation" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TeamTest.jersey_Numbers_Are_Unique" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="week1.CreatAndDestroyObjects.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="week1.CreatAndDestroyObjects" />
+      <option name="MAIN_CLASS_NAME" value="week1.CreatAndDestroyObjects.TeamTest" />
+      <option name="METHOD_NAME" value="jersey_Numbers_Are_Unique" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in Automation" />
+        <item itemvalue="JUnit.TeamTest.create_Team_Formation" />
+        <item itemvalue="JUnit.TeamTest" />
+        <item itemvalue="JUnit.PlayerTest" />
+        <item itemvalue="JUnit.TeamTest.jersey_Numbers_Are_Unique" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -52,5 +141,14 @@
       <updated>1688656907210</updated>
     </task>
     <servers />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Automation$PlayerTest.ic" NAME="PlayerTest Coverage Results" MODIFIED="1689268067486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>week1.CreatAndDestroyObjects.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Automation$TeamTest.ic" NAME="TeamTest Coverage Results" MODIFIED="1689268720047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>week1.CreatAndDestroyObjects.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Automation$All_in_Automation.ic" NAME="All in Automation Coverage Results" MODIFIED="1689268097872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
