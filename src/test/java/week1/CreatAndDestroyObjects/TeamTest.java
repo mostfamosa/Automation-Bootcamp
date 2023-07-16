@@ -1,5 +1,6 @@
 package week1.CreatAndDestroyObjects;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -20,6 +21,11 @@ public class TeamTest {
     void setUp() {
         List<String> nameDictionary1 = Arrays.asList("John", "Michael", "David", "Sarah", "Emma", "James", "Emily", "William", "Olivia", "Sophia", "Zoro");
         team = Team.createTeamWithFormation(nameDictionary1, 1, 2, 4, 4);
+    }
+
+    @AfterEach
+    void clearSetUp() {
+        // Java performs gc by itself on objects, no need to do it manually.
     }
 
     @Test
@@ -103,8 +109,28 @@ public class TeamTest {
         assertThrows(NullPointerException.class, () -> new Team(Position.DEFENDER, 4, Position.GOALKEEPER, 1, Position.ATTACKER, 2, Position.MIDFIELDER, 2, 2));
     }
 
+
     @Test
     void create_Team_Formation() {
+        int numberOfGoalKeeper = 1, numberOfDefenders = 3, numberOfMidfielders = 3, numberofAttackers = 4;
+
+        List<String> nameDictionary2 = Arrays.asList("Jack", "Steve", "Timon", "Ahmad", "Jad", "Tem", "Jack", "Samer", "Asad", "Marly", "Jimmy", "Naruto", "Lufi", "Ace", "Brad");
+        team = Team.createTeamWithFormation(nameDictionary2, numberOfGoalKeeper, numberOfDefenders, numberOfMidfielders, numberofAttackers);
+        int checkGoalKeeper = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.GOALKEEPER)).count();
+        int checkDefenders = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.DEFENDER)).count();
+        int checkMidfielders = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.MIDFIELDER)).count();
+        int checkAttackers = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.ATTACKER)).count();
+
+        assertAll(
+                () -> assertEquals(numberOfGoalKeeper, checkGoalKeeper),
+                () -> assertEquals(numberOfDefenders, checkDefenders),
+                () -> assertEquals(numberOfMidfielders, checkMidfielders),
+                () -> assertEquals(numberofAttackers, checkAttackers)
+        );
+    }
+
+    @Test
+    void create_Team_Formation_With_Random() {
         int numberOfGoalKeeper = 1, numberOfDefenders = 2, numberOfMidfielders = 3, numberofAttackers = 4;
         int numberOfRandomPlayers = 1;
         List<String> nameDictionary2 = Arrays.asList("Jack", "Steve", "Timon", "Ahmad", "Jad", "Tem", "Jack", "Samer", "Asad", "Marly", "Jimmy", "Naruto", "Lufi", "Ace", "Brad");
@@ -114,8 +140,10 @@ public class TeamTest {
         int checkMidfielders = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.MIDFIELDER)).count();
         int checkAttackers = (int) team.getmTeam().stream().filter(player -> player.getPosition().equals(Position.ATTACKER)).count();
 
-        assertTrue(numberOfGoalKeeper == checkGoalKeeper && numberOfDefenders <= checkDefenders && numberOfMidfielders <= checkMidfielders && numberofAttackers <= checkAttackers);
-
+        assertEquals(numberOfGoalKeeper, checkGoalKeeper);
+        assertThat(numberOfDefenders, lessThanOrEqualTo(checkDefenders));
+        assertThat(numberOfMidfielders, lessThanOrEqualTo(checkMidfielders));
+        assertThat(numberofAttackers, lessThanOrEqualTo(checkAttackers));
     }
 
 }

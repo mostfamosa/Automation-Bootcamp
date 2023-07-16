@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bebe97f3-9a4d-4fd1-8eb4-dd31271fae56" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Position.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/PlayerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/TeamTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/NameGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Team.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/week1/CreatAndDestroyObjects/Utils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/TeamTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/week1/CreatAndDestroyObjects/TeamTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,6 +141,9 @@
     <SUITE FILE_PATH="coverage/Automation$TeamTest.ic" NAME="TeamTest Coverage Results" MODIFIED="1689268720047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>week1.CreatAndDestroyObjects.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/Automation$All_in_Automation.ic" NAME="All in Automation Coverage Results" MODIFIED="1689268097872" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Automation$TeamTest_create_Team_Formation.ic" NAME="TeamTest.create_Team_Formation Coverage Results" MODIFIED="1689269920165" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>week1.CreatAndDestroyObjects.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/Automation$All_in_Automation.ic" NAME="All in Automation Coverage Results" MODIFIED="1689516655065" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
