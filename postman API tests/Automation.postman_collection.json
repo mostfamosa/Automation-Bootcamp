@@ -1,0 +1,951 @@
+{
+	"info": {
+		"_postman_id": "f8c26cad-9972-4c3c-a2b7-7ab9b8554da5",
+		"name": "Automation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20896084"
+	},
+	"item": [
+		{
+			"name": "https://reqres.in/",
+			"item": [
+				{
+					"name": "get users req",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://reqres.in/api/users?page=2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create user req",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Mostafa\",\r\n    \"job\":\"Software Engineer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update job req",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Mostafa\",\r\n    \"job\":\"QA Automation Engineer\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://reqres.in/api/users/2",
+							"protocol": "https",
+							"host": [
+								"reqres",
+								"in"
+							],
+							"path": [
+								"api",
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "https://wizard-world-api.herokuapp.com/",
+			"item": [
+				{
+					"name": "get houses req",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wizard-world-api.herokuapp.com/Elixirs/0106fb32-b00d-4d70-9841-4b7c2d2cca71",
+							"protocol": "https",
+							"host": [
+								"wizard-world-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Elixirs",
+								"0106fb32-b00d-4d70-9841-4b7c2d2cca71"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "req bad house",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://wizard-world-api.herokuapp.com/Elixirs/0106fb32-b0",
+							"protocol": "https",
+							"host": [
+								"wizard-world-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Elixirs",
+								"0106fb32-b0"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post feedback",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"feedbackType\": \"General\",\r\n  \"feedback\": \"string\",\r\n  \"entityId\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://wizard-world-api.herokuapp.com/Feedback",
+							"protocol": "https",
+							"host": [
+								"wizard-world-api",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Feedback"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DeckOfCard",
+			"item": [
+				{
+					"name": "Create a new deck",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Save deck_id in a collection variable\r",
+									"var jsonData = pm.response.json();\r",
+									"var deck_id = jsonData.deck_id;\r",
+									"pm.collectionVariables.set(\"deck_id\", deck_id);\r",
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"shuffled\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"remaining\", \"shuffled\"]\r",
+									"    };\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\", true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\");\r",
+									"    pm.expect(pm.response.json().remaining).to.be.a('number');\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"shuffled\");\r",
+									"});\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://deckofcardsapi.com/api/deck/new",
+							"protocol": "https",
+							"host": [
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Draw cards to put in a pile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Save cards in a collection variable\r",
+									"var jsonData = pm.response.json();\r",
+									"var cards = jsonData.cards;\r",
+									"pm.collectionVariables.set(\"card1\", cards[0].code);\r",
+									"pm.collectionVariables.set(\"card2\", cards[1].code);\r",
+									"\r",
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"cards\": {\r",
+									"                \"type\": \"array\",\r",
+									"                \"items\": {\r",
+									"                    \"type\": \"object\",\r",
+									"                    \"properties\": {\r",
+									"                        \"code\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        },\r",
+									"                        \"image\": {\r",
+									"                            \"type\": \"string\",\r",
+									"                            \"format\": \"uri\"\r",
+									"                        },\r",
+									"                        \"images\": {\r",
+									"                            \"type\": \"object\",\r",
+									"                            \"properties\": {\r",
+									"                                \"svg\": {\r",
+									"                                    \"type\": \"string\",\r",
+									"                                    \"format\": \"uri\"\r",
+									"                                },\r",
+									"                                \"png\": {\r",
+									"                                    \"type\": \"string\",\r",
+									"                                    \"format\": \"uri\"\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"required\": [\"svg\", \"png\"]\r",
+									"                        },\r",
+									"                        \"value\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        },\r",
+									"                        \"suit\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"required\": [\"code\", \"image\", \"images\", \"value\", \"suit\"]\r",
+									"                }\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"cards\", \"remaining\"]\r",
+									"    };\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\", true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a(\"string\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"cards\").that.is.an('array').and.not.empty;\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"code\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"image\");\r",
+									"    pm.expect(pm.response.json().cards[0].images).to.have.property(\"svg\");\r",
+									"    pm.expect(pm.response.json().cards[0].images).to.have.property(\"png\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"value\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"suit\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a(\"number\");\r",
+									"});\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.deckofcardsapi.com/api/deck/{{deck_id}}/draw/?count=2",
+							"protocol": "https",
+							"host": [
+								"www",
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"draw",
+								""
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new pile from the deck",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"\r",
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"piles\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"properties\": {\r",
+									"                    pileName: {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"properties\": {\r",
+									"                            \"remaining\": {\r",
+									"                                \"type\": \"integer\"\r",
+									"                            }\r",
+									"                        },\r",
+									"                        \"required\": [\"remaining\"]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"required\": [pileName]\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"remaining\", \"piles\"]\r",
+									"    };\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\", true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a('string');\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a('number');\r",
+									"\r",
+									"    // Validate piles\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"piles\").that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).to.have.property(\"remaining\").that.is.a('number');\r",
+									"\r",
+									"    \r",
+									"});\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.deckofcardsapi.com/api/deck/{{deck_id}}/pile/{{first_pile}}/add/?cards={{card1}},{{card2}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"pile",
+								"{{first_pile}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "cards",
+									"value": "{{card1}},{{card2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Move a few cards to the pile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"piles\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"properties\": {\r",
+									"                    pileName: {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"properties\": {\r",
+									"                            \"remaining\": {\r",
+									"                                \"type\": \"integer\"\r",
+									"                            }\r",
+									"                        },\r",
+									"                        \"required\": [\"remaining\"]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"required\": [pileName]\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"remaining\", \"piles\"]\r",
+									"    };\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\", true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a('string');\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a('number');\r",
+									"\r",
+									"    // Validate piles\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"piles\").that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).to.have.property(\"remaining\").that.is.a('number');\r",
+									"\r",
+									"    \r",
+									"});\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.response.to.have.status(200)\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.deckofcardsapi.com/api/deck/{{deck_id}}/pile/{{first_pile}}/add/?cards={{card1}},{{card2}}",
+							"protocol": "https",
+							"host": [
+								"www",
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"pile",
+								"{{first_pile}}",
+								"add",
+								""
+							],
+							"query": [
+								{
+									"key": "cards",
+									"value": "{{card1}},{{card2}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate these cards are in the pile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            },\r",
+									"            \"piles\": {\r",
+									"                \"type\": \"object\",\r",
+									"                \"properties\": {\r",
+									"                    pileName: {\r",
+									"                        \"type\": \"object\",\r",
+									"                        \"properties\": {\r",
+									"                            \"remaining\": {\r",
+									"                                \"type\": \"integer\"\r",
+									"                            },\r",
+									"                            \"cards\": {\r",
+									"                                \"type\": \"array\",\r",
+									"                            }\r",
+									"                        },\r",
+									"                        \"required\": [\"remaining\", \"cards\"]\r",
+									"                    }\r",
+									"                },\r",
+									"                \"required\": [pileName]\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"remaining\", \"piles\"]\r",
+									"    }\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\", true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a('string');\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a('number');\r",
+									"\r",
+									"    // Validate piles\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"piles\").that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).that.is.an('object').and.not.empty;\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).to.have.property(\"remaining\").that.is.a('number');\r",
+									"    pm.expect(pm.response.json().piles).to.have.property(pileName).to.have.property(\"cards\").that.is.an('Array').and.not.empty;\r",
+									"\r",
+									"});\r",
+									"\r",
+									"\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"\r",
+									"const cardX = pm.collectionVariables.get(\"card1\");\r",
+									"\r",
+									"//Check if the card is in the pile\r",
+									"pm.test(\"Card \"+cardX+\" is in the pile\", function () {\r",
+									"    var pileName = pm.collectionVariables.get('first_pile');\r",
+									"\r",
+									"\r",
+									"    // Get the response JSON\r",
+									"    const jsonData = pm.response.json();\r",
+									"\r",
+									"    const cardsInPile = jsonData.piles[pileName].cards;\r",
+									"\r",
+									"    // Use Array.prototype.some() to check if the card is present in the pile\r",
+									"    const cardFound = cardsInPile.some(card => card.code === cardX);\r",
+									"\r",
+									"    // Assertion to check if the card is found in the pile\r",
+									"    pm.expect(cardFound).to.be.true;\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.deckofcardsapi.com/api/deck/{{deck_id}}/pile/{{first_pile}}/list",
+							"protocol": "https",
+							"host": [
+								"www",
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"pile",
+								"{{first_pile}}",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Validate these cards are in the deck",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"var card1 = pm.collectionVariables.get(\"card1\");\r",
+									"\r",
+									"// Status validation\r",
+									"pm.test(\"Status code is 200 OK\", function() {\r",
+									"    pm.response.to.have.status(200)\r",
+									"})\r",
+									"\r",
+									"// Is card in deck test\r",
+									"pm.test(\"Card \"+card1+\" is NOT in the deck\", function () {\r",
+									"    \r",
+									"    // Get the response JSON\r",
+									"    const jsonData = pm.response.json();\r",
+									"\r",
+									"    const cardsInDeck = jsonData.cards;\r",
+									"\r",
+									"    // Use Array.prototype.some() to check if the card is present in the pile\r",
+									"    const cardFound = cardsInDeck.some(card => card.code === card1);\r",
+									"\r",
+									"    // Assertion to check if the card is found in the pile\r",
+									"    pm.expect(cardFound).to.be.false;\r",
+									"});\r",
+									"\r",
+									"// Schema validation\r",
+									"pm.test(\"Response has a valid schema\", function () {\r",
+									"    const responseSchema = {\r",
+									"        \"properties\": {\r",
+									"            \"success\": {\r",
+									"                \"type\": \"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\": {\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"cards\": {\r",
+									"                \"type\": \"array\",\r",
+									"                \"items\": {\r",
+									"                    \"type\": \"object\",\r",
+									"                    \"properties\": {\r",
+									"                        \"code\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        },\r",
+									"                        \"image\": {\r",
+									"                            \"type\": \"string\",\r",
+									"                            \"format\": \"uri\"\r",
+									"                        },\r",
+									"                        \"images\": {\r",
+									"                            \"type\": \"object\",\r",
+									"                            \"properties\": {\r",
+									"                                \"svg\": {\r",
+									"                                    \"type\": \"string\",\r",
+									"                                    \"format\": \"uri\"\r",
+									"                                },\r",
+									"                                \"png\": {\r",
+									"                                    \"type\": \"string\",\r",
+									"                                    \"format\": \"uri\"\r",
+									"                                }\r",
+									"                            },\r",
+									"                            \"required\": [\"svg\", \"png\"]\r",
+									"                        },\r",
+									"                        \"value\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        },\r",
+									"                        \"suit\": {\r",
+									"                            \"type\": \"string\"\r",
+									"                        }\r",
+									"                    },\r",
+									"                    \"required\": [\"code\", \"image\", \"images\", \"value\", \"suit\"]\r",
+									"                }\r",
+									"            },\r",
+									"            \"remaining\": {\r",
+									"                \"type\": \"integer\"\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\": [\"success\", \"deck_id\", \"cards\", \"remaining\"]\r",
+									"    };\r",
+									"    pm.response.to.have.jsonSchema(responseSchema);\r",
+									"});\r",
+									"\r",
+									"// Data validation\r",
+									"pm.test(\"Response contains necessary data\", function () {\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\").that.is.a(\"boolean\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a(\"string\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"cards\").that.is.an('array').and.not.empty;\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"code\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"image\");\r",
+									"    pm.expect(pm.response.json().cards[0].images).to.have.property(\"svg\");\r",
+									"    pm.expect(pm.response.json().cards[0].images).to.have.property(\"png\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"value\");\r",
+									"    pm.expect(pm.response.json().cards[0]).to.have.property(\"suit\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a(\"number\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://www.deckofcardsapi.com/api/deck/{{deck_id}}/draw/?count=52",
+							"protocol": "https",
+							"host": [
+								"www",
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"draw",
+								""
+							],
+							"query": [
+								{
+									"key": "count",
+									"value": "52"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Return cards to deck",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"//Status validation\r",
+									"pm.test(\"Status code is 200 OK\",function(){\r",
+									"    pm.response.to.have.status(200);\r",
+									"})\r",
+									"\r",
+									"//Schema validation\r",
+									"pm.test(\"Response has a valid schema\",function(){\r",
+									"    const responseSchema = {\r",
+									"        \"properties\":{\r",
+									"            \"success\":{\r",
+									"                \"type\":\"boolean\"\r",
+									"            },\r",
+									"            \"deck_id\":{\r",
+									"                \"type\": \"string\"\r",
+									"            },\r",
+									"            \"remaining\":{\r",
+									"                \"type\": \"number\"\r",
+									"            }\r",
+									"        },\r",
+									"        \"required\":[\"success\",\"deck_id\",\"remaining\"]\r",
+									"    }\r",
+									"     pm.response.to.have.jsonSchema(responseSchema);\r",
+									"})\r",
+									"\r",
+									"//Data validation\r",
+									"pm.test(\"Response contains necessary data\",function(){\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"success\",true);\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"deck_id\").that.is.a(\"string\");\r",
+									"    pm.expect(pm.response.json()).to.have.property(\"remaining\").that.is.a(\"number\");\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://deckofcardsapi.com/api/deck/{{deck_id}}/return/",
+							"protocol": "https",
+							"host": [
+								"deckofcardsapi",
+								"com"
+							],
+							"path": [
+								"api",
+								"deck",
+								"{{deck_id}}",
+								"return",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "first_pile",
+			"value": "firstPile"
+		},
+		{
+			"key": "deck_id",
+			"value": ""
+		},
+		{
+			"key": "card1",
+			"value": ""
+		},
+		{
+			"key": "card2",
+			"value": ""
+		},
+		{
+			"key": "second_pile",
+			"value": "secondPile"
+		}
+	]
+}
