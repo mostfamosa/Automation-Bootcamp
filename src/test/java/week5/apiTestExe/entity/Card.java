@@ -1,4 +1,4 @@
-package week5.apiTestExe.logic;
+package week5.apiTestExe.entity;
 
 import lombok.Data;
 

@@ -9,6 +9,9 @@ public class ResponseWrapper<T> {
     private Map<String, String> responseHeaders;
     private T data;
 
+    public ResponseWrapper() {
+    }
+
     public ResponseWrapper(int status, Map<String, String> responseHeaders, T data) {
         this.status = status;
         this.responseHeaders = responseHeaders;
