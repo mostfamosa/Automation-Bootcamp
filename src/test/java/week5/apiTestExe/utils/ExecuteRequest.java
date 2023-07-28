@@ -7,12 +7,12 @@ import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import week5.apiTestExe.infra.ResponseWrapper;
+import week5.apiTestExe.logic.response.ResponseWrapper;
 
 import java.io.IOException;
 
 public class ExecuteRequest {
-    private static ObjectMapper objectMapper = new ObjectMapper();
+    private static final ObjectMapper objectMapper = new ObjectMapper();
 
     public static <T> ResponseWrapper<T> execute(CloseableHttpClient httpClient, ClassicHttpRequest httpMethod, ResponseWrapper<T> responseWrapper, Class<T> clz) {
 
