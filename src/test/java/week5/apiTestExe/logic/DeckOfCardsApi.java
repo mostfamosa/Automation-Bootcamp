@@ -27,7 +27,6 @@ public class DeckOfCardsApi {
         String url = BASE_URL + "api/deck/new/shuffle/";
         Map<String, String> param = new HashMap<>();
         param.put("deck_count", String.valueOf(numberOfDecks));
-
         return HttpRequest.request(HttpMethods.GET, url, param, DeckDTO.class);
     }
 

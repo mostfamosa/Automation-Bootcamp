@@ -6,7 +6,6 @@ import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
 import week5.apiTestExe.entities.enums.HttpMethods;
 import week5.apiTestExe.logic.response.ResponseWrapper;
-import week5.apiTestExe.utils.ExecuteRequest;
 
 import java.io.IOException;
 import java.util.Map;

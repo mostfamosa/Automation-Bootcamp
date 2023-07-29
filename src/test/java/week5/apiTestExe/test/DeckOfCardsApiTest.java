@@ -1,5 +1,6 @@
 package week5.apiTestExe.test;
 
+import io.qameta.allure.Description;
 import io.qameta.allure.Story;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,10 +39,11 @@ public class DeckOfCardsApiTest {
 
 
     @Test
+    @Description("Verify creating new deck functionality")
     @Story("user trying to create new deck of cards")
     void create_New_Deck_Validations() {
 
-        System.out.println("create_New_Deck_Validations:");
+        System.out.println("\ncreate_New_Deck_Validations:");
         System.out.println(response.getData());
 
         //assert
@@ -63,18 +65,19 @@ public class DeckOfCardsApiTest {
     }
 
     @ParameterizedTest
-    @MethodSource("getNumberOfDecks")
-    @Story("user trying to create new shuffled number of decks")
+    @MethodSource("getNumberOfDecks2")
+    @Description("Verify that trying to create more than twenty new decks will fail")
+    @Story("user trying to create more than twenty new decks")
     void create_More_Than_Twenty_Decks_Failed(int numberOfDecks) {
+
+        System.out.println("\ncreate_More_Than_Twenty_Decks_Failed (numberOfDecks = " + numberOfDecks + "):");
         //********** ALWAYS FAIL -  when the numberOfDecks = 24 for some reason **********
-        numberOfDecks += 20;
         try {
             response = DeckOfCardsApi.createNumberOfDecks(numberOfDecks);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        System.out.println("create_More_Than_Twenty_Decks_Failed (numberOfDecks = " + numberOfDecks + "):");
         System.out.println(response.getData());
 
         //assert
@@ -94,15 +97,17 @@ public class DeckOfCardsApiTest {
 
     @ParameterizedTest
     @MethodSource("getNumberOfDecks")
+    @Description("Verify creating new shuffled deck functionality")
     @Story("user trying to create new shuffled number of decks")
     void create_New_Shuffled_Number_Of_Decks(int numberOfDecks) {
+
+        System.out.println("\ncreate_New_Shuffled_Number_Of_Decks (numberOfDecks = " + numberOfDecks + "):");
         try {
             response = DeckOfCardsApi.createNumberOfDecks(numberOfDecks);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
-        System.out.println("create_New_Number_Of_Decks_Validations (numberOfDecks = " + numberOfDecks + "):");
         System.out.println(response.getData());
 
         //assert
@@ -134,13 +139,31 @@ public class DeckOfCardsApiTest {
                 Arguments.of(7),
                 Arguments.of(8),
                 Arguments.of(9),
-                Arguments.of(10)
+                Arguments.of(10),
+                Arguments.of(20)
+        );
+    }
+
+    private static Stream<Arguments> getNumberOfDecks2() {
+        return Stream.of(
+                Arguments.of(21),
+                Arguments.of(22),
+                Arguments.of(23),
+                Arguments.of(24),
+                Arguments.of(25),
+                Arguments.of(26),
+                Arguments.of(27),
+                Arguments.of(28),
+                Arguments.of(29),
+                Arguments.of(30)
         );
     }
 
     @Test
+    @Description("Verify drawing cards functionality")
     @Story("user trying to draw 2 cards from the deck")
     void draw_Two_Cards_From_Deck_Successfully() {
+        System.out.println("\ndraw_Two_Cards_From_Deck_Successfully:");
         //act
         try {
             response = DeckOfCardsApi.drawCardsFromDeckById(deckId, 2);
@@ -148,7 +171,6 @@ public class DeckOfCardsApiTest {
             throw new RuntimeException("Can't draw cards!\n " + e);
         }
 
-        System.out.println("draw_Two_Cards_From_Deck:");
         System.out.println(response.getData());
 
 
@@ -172,8 +194,10 @@ public class DeckOfCardsApiTest {
     }
 
     @Test
+    @Description("Verify that trying to draw more cards than in the deck will fail")
     @Story("user trying to draw more cards than in the deck ( x > 52 )")
     void draw_Cards_More_Than_In_The_Deck_Failed() {
+        System.out.println("\ndraw_Cards_More_Than_In_The_Deck_Failed:");
         //act
         try {
             response = DeckOfCardsApi.drawCardsFromDeckById(deckId, 53);
@@ -181,7 +205,6 @@ public class DeckOfCardsApiTest {
             throw new RuntimeException("Can't draw cards!\n " + e);
         }
 
-        System.out.println("draw_Cards_More_Than_In_The_Deck_Failed:");
         System.out.println(response.getData());
 
 
@@ -205,8 +228,10 @@ public class DeckOfCardsApiTest {
     }
 
     @Test
+    @Description("Verify creating new pile functionality")
     @Story("user trying to create new pile from the drawn cards")
     void create_New_Pile_Successfully() {
+        System.out.println("\ncreate_New_Pile_Successfully:");
         //Arrange
         ResponseWrapper<DeckDTO> responseFromDrawingCards;
 
@@ -238,7 +263,6 @@ public class DeckOfCardsApiTest {
                 pileCheck = entry.getValue();
             }
         }
-        System.out.println("create_New_Pile:");
         System.out.println(response.getData());
 
 
@@ -266,9 +290,11 @@ public class DeckOfCardsApiTest {
     }
 
     @Test
-    @Story("user trying to create new pile from the drawn cards")
+    @Description("Verify creating new pile without drawing cards first will fail")
+    @Story("user trying to create new pile without drawing cards first")
     void create_New_Pile_Without_Drawing_Cards_First_Failed() {
 
+        System.out.println("\ncreate_New_Pile_Without_Drawing_Cards_First_Failed:");
         CardDTO firstCard = new CardDTO();
         CardDTO secondCard = new CardDTO();
 
@@ -292,7 +318,6 @@ public class DeckOfCardsApiTest {
                 pileCheck = entry.getValue();
             }
         }
-        System.out.println("create_New_Pile_Without_Drawing_Cards_First_Failed:");
         System.out.println(response.getData());
 
 
@@ -319,8 +344,10 @@ public class DeckOfCardsApiTest {
     }
 
     @Test
-    @Story("validating that the cards are in the pile")
+    @Description("Verify that the cards are in the pile")
+    @Story("user trying to check that the cards are in the pile")
     void validate_Card_Is_In_Pile() {
+        System.out.println("\nvalidate_Card_Is_In_Pile:");
         //arrange
         ResponseWrapper<DeckDTO> responseFromDrawingCards, responseFromCreatingNewPile;
         //draw 2 cards
@@ -350,7 +377,6 @@ public class DeckOfCardsApiTest {
             throw new RuntimeException("Can't show cards in the pile !\n " + e);
         }
 
-        System.out.println("validate_Card_Is_In_Pile:");
         System.out.println(response.getData());
 
 
@@ -383,8 +409,10 @@ public class DeckOfCardsApiTest {
     }
 
     @Test
-    @Story("validating that the cards are NOT in the deck")
+    @Description("Verify that the cards are not in the deck")
+    @Story("user trying to check that the cards are not in the deck")
     void validate_Card_Is_Not_In_Deck() {
+        System.out.println("\nvalidate_Card_Is_Not_In_Deck:");
         //arrange
         ResponseWrapper<DeckDTO> responseFromDrawingCards, responseFromCreatingNewPile;
         //draw 2 cards
@@ -415,7 +443,6 @@ public class DeckOfCardsApiTest {
             throw new RuntimeException("Can't draw cards from the deck !\n " + e);
         }
 
-        System.out.println("validate_Card_Is_In_Deck:");
         System.out.println(response.getData());
 
 
