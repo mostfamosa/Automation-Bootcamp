@@ -1,6 +1,5 @@
 package week5.apiTestExe.infra;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -11,7 +10,6 @@ import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
 import week5.apiTestExe.entities.enums.HttpMethods;
-import week5.apiTestExe.logic.response.ResponseWrapper;
 import week5.apiTestExe.utils.ValidateJson;
 
 import java.io.IOException;
@@ -83,9 +81,7 @@ public class HttpRequest {
 
     public static <T> void execute(CloseableHttpClient httpClient, ClassicHttpRequest httpMethod, ResponseWrapper<T> responseWrapper, Class<T> clz) {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        // Execute the request and get the response
+            // Execute the request and get the response
         try (CloseableHttpResponse response = httpClient.execute(httpMethod)) {
             // Get the response status code
             responseWrapper.setStatus(response.getCode());

@@ -1,4 +1,4 @@
-package week5.apiTestExe.logic.response;
+package week5.apiTestExe.infra;
 
 import lombok.Data;
 

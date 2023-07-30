@@ -3,7 +3,7 @@ package week5.apiTestExe.utils;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import week5.apiTestExe.logic.response.ResponseWrapper;
+import week5.apiTestExe.infra.ResponseWrapper;
 
 public class ValidateJson {
     public static <T> void validate(Class<T> clz, String jsonToCheck, ResponseWrapper<T> responseWrapper) {

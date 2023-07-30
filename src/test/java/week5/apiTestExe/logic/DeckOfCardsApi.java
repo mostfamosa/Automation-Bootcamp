@@ -5,7 +5,7 @@ import week5.apiTestExe.entities.DTOs.CardDTO;
 import week5.apiTestExe.entities.DTOs.DeckDTO;
 import week5.apiTestExe.infra.HttpRequest;
 import week5.apiTestExe.entities.enums.HttpMethods;
-import week5.apiTestExe.logic.response.ResponseWrapper;
+import week5.apiTestExe.infra.ResponseWrapper;
 
 import java.io.IOException;
 import java.util.ArrayList;

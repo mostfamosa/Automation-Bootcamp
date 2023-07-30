@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import week5.apiTestExe.logic.response.ResponseWrapper;
+import week5.apiTestExe.infra.ResponseWrapper;
 import week5.apiTestExe.logic.DeckOfCardsApi;
 import week5.apiTestExe.entities.DTOs.CardDTO;
 import week5.apiTestExe.entities.DTOs.DeckDTO;
