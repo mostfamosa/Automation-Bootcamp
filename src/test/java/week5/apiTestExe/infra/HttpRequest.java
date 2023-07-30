@@ -1,11 +1,18 @@
 package week5.apiTestExe.infra;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.hc.client5.http.classic.methods.HttpGet;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
+import org.apache.hc.client5.http.impl.classic.CloseableHttpResponse;
 import org.apache.hc.client5.http.impl.classic.HttpClients;
+import org.apache.hc.core5.http.ClassicHttpRequest;
+import org.apache.hc.core5.http.HttpEntity;
+import org.apache.hc.core5.http.ParseException;
+import org.apache.hc.core5.http.io.entity.EntityUtils;
 import week5.apiTestExe.entities.enums.HttpMethods;
 import week5.apiTestExe.logic.response.ResponseWrapper;
+import week5.apiTestExe.utils.ValidateJson;
 
 import java.io.IOException;
 import java.util.Map;
@@ -53,7 +60,7 @@ public class HttpRequest {
                         }
                     }
                     // Execute
-                    ExecuteRequest.execute(httpClient, httpPost, responseWrapper, clz);
+                    execute(httpClient, httpPost, responseWrapper, clz);
                 }
                 case GET -> {
                     // Create an instance of HttpGet with the URL
@@ -65,13 +72,34 @@ public class HttpRequest {
                         }
                     }
                     // Execute
-                    ExecuteRequest.execute(httpClient, httpGet, responseWrapper, clz);
+                    execute(httpClient, httpGet, responseWrapper, clz);
                 }
             }
         } catch (IOException e) {
             throw new RuntimeException("Error of creating an instance of CloseableHttpClient:\n" + e);
         }
         return responseWrapper;
+    }
+
+    public static <T> void execute(CloseableHttpClient httpClient, ClassicHttpRequest httpMethod, ResponseWrapper<T> responseWrapper, Class<T> clz) {
+
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        // Execute the request and get the response
+        try (CloseableHttpResponse response = httpClient.execute(httpMethod)) {
+            // Get the response status code
+            responseWrapper.setStatus(response.getCode());
+
+            // Get the response entity
+            HttpEntity responseEntity = response.getEntity();
+            String responseBody = EntityUtils.toString(responseEntity);
+
+            // Validate Json
+            ValidateJson.validate(clz, responseBody, responseWrapper);
+
+        } catch (IOException | ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

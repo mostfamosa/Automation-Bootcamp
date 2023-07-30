@@ -14,9 +14,10 @@ public class ResponseWrapper<T> {
 
     @Override
     public String toString() {
-        return "HttpResponse:\n" +
+        return "ResponseWrapper{" +
                 "status=" + status +
-                "\nresponseHeaders=" + responseHeaders +
-                "\ndata=" + data ;
+                ", responseHeaders=" + responseHeaders +
+                ", data=" + data +
+                '}';
     }
 }
