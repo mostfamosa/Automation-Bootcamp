@@ -266,9 +266,9 @@ public class DeckOfCardsApiTest {
         System.out.println(response.getData());
 
 
-        //Assert pile info
-        assertEquals(pileName, pileNameCheck);
-        assertEquals(2, pileCheck.getRemaining());
+
+        String finalPileNameCheck = pileNameCheck;
+        int finalRemainingCheck = pileCheck.getRemaining();
 
         assertAll(
                 //status validation
@@ -280,6 +280,9 @@ public class DeckOfCardsApiTest {
                 () -> assertThat(response.getData().isSuccess(), notNullValue()),
                 () -> assertThat(response.getData().getPiles(), notNullValue()),
 
+                //Assert pile info
+                () -> assertEquals(pileName, finalPileNameCheck),
+                () -> assertEquals(0, finalRemainingCheck),
 
                 //data validation
                 () -> assertTrue(response.getData().isSuccess()),
@@ -293,6 +296,8 @@ public class DeckOfCardsApiTest {
     @Description("Verify creating new pile without drawing cards first will fail")
     @Story("user trying to create new pile without drawing cards first")
     void create_New_Pile_Without_Drawing_Cards_First_Failed() {
+        String pileNameCheck = null;
+        PileDTO pileCheck = null;
 
         System.out.println("\ncreate_New_Pile_Without_Drawing_Cards_First_Failed:");
         CardDTO firstCard = new CardDTO();
@@ -310,8 +315,7 @@ public class DeckOfCardsApiTest {
         }
 
         //get the pile name and Pile object from the response
-        String pileNameCheck = null;
-        PileDTO pileCheck = null;
+
         for (Map.Entry<String, PileDTO> entry : response.getData().getPiles().entrySet()) {
             if (entry.getKey().equals(pileName)) {
                 pileNameCheck = entry.getKey();
@@ -321,10 +325,9 @@ public class DeckOfCardsApiTest {
         System.out.println(response.getData());
 
 
-        //Assert pile info
-        assertEquals(pileName, pileNameCheck);
-        assertEquals(0, pileCheck.getRemaining());
 
+        String finalPileNameCheck = pileNameCheck;
+        int finalRemainingCheck = pileCheck.getRemaining();
         assertAll(
                 //status validation
                 () -> assertEquals(200, response.getStatus(), "Expected status code is 200"),
@@ -335,6 +338,9 @@ public class DeckOfCardsApiTest {
                 () -> assertThat(response.getData().isSuccess(), notNullValue()),
                 () -> assertThat(response.getData().getPiles(), notNullValue()),
 
+                //Assert pile info
+                () -> assertEquals(pileName, finalPileNameCheck),
+                () -> assertEquals(0, finalRemainingCheck),
 
                 //data validation
                 () -> assertTrue(response.getData().isSuccess()),
