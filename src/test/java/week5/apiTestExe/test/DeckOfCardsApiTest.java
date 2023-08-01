@@ -282,7 +282,7 @@ public class DeckOfCardsApiTest {
 
                 //Assert pile info
                 () -> assertEquals(pileName, finalPileNameCheck),
-                () -> assertEquals(0, finalRemainingCheck),
+                () -> assertEquals(cards.size(), finalRemainingCheck),
 
                 //data validation
                 () -> assertTrue(response.getData().isSuccess()),

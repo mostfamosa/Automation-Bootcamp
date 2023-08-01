@@ -91,7 +91,7 @@ public class HttpRequest {
             String responseBody = EntityUtils.toString(responseEntity);
 
             // Validate Json
-            ValidateJson.validate(clz, responseBody, responseWrapper);
+            responseWrapper.setData(ValidateJson.validate(clz, responseBody));
 
         } catch (IOException | ParseException e) {
             throw new RuntimeException(e);
