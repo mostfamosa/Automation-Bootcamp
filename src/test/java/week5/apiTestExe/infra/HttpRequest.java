@@ -9,7 +9,10 @@ import org.apache.hc.core5.http.ClassicHttpRequest;
 import org.apache.hc.core5.http.HttpEntity;
 import org.apache.hc.core5.http.ParseException;
 import org.apache.hc.core5.http.io.entity.EntityUtils;
-import week5.apiTestExe.entities.enums.HttpMethods;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import week5.apiTestExe.logic.entities.enums.HttpMethods;
+import week5.apiTestExe.test.DeckOfCardsApiTest;
 import week5.apiTestExe.utils.ValidateJson;
 
 import java.io.IOException;
@@ -17,6 +20,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class HttpRequest {
+
+    private static final Logger logger = LogManager.getLogger(DeckOfCardsApiTest.class);
 
     //request without param & header
     public static <T> ResponseWrapper<T> request(HttpMethods httpMethods, String url, Class<T> clz) {
@@ -44,36 +49,36 @@ public class HttpRequest {
             url += "?" + queryString;
         }
 
+        ClassicHttpRequest request;
+        switch (httpMethods) {
+            case POST -> {
+                // Create an instance of HttpPost with the URL
+                request = new HttpPost(url);
+
+            }
+            case GET -> {
+                // Create an instance of HttpGet with the URL
+                request = new HttpGet(url);
+
+            }
+            default -> {
+                logger.error("Error of Bad Method:\n");
+                throw new RuntimeException("Bad Method!");
+            }
+        }
+        // Set the headers of the request
+        if (headers != null) {
+            for (String key : headers.keySet()) {
+                request.setHeader(key, headers.get(key));
+            }
+        }
 
         // Create an instance of CloseableHttpClient
         try (CloseableHttpClient httpClient = HttpClients.createDefault()) {
-            switch (httpMethods) {
-                case POST -> {
-                    // Create an instance of HttpPost with the URL
-                    HttpPost httpPost = new HttpPost(url);
-                    // Set the headers of the request
-                    if (headers != null) {
-                        for (String key : headers.keySet()) {
-                            httpPost.setHeader(key, headers.get(key));
-                        }
-                    }
-                    // Execute
-                    execute(httpClient, httpPost, responseWrapper, clz);
-                }
-                case GET -> {
-                    // Create an instance of HttpGet with the URL
-                    HttpGet httpGet = new HttpGet(url);
-                    // Set the headers of the request
-                    if (headers != null) {
-                        for (String key : headers.keySet()) {
-                            httpGet.setHeader(key, headers.get(key));
-                        }
-                    }
-                    // Execute
-                    execute(httpClient, httpGet, responseWrapper, clz);
-                }
-            }
+            // Execute
+            execute(httpClient, request, responseWrapper, clz);
         } catch (IOException e) {
+            logger.error("Error of creating an instance of CloseableHttpClient:\n" + e);
             throw new RuntimeException("Error of creating an instance of CloseableHttpClient:\n" + e);
         }
         return responseWrapper;
@@ -81,7 +86,7 @@ public class HttpRequest {
 
     public static <T> void execute(CloseableHttpClient httpClient, ClassicHttpRequest httpMethod, ResponseWrapper<T> responseWrapper, Class<T> clz) {
 
-            // Execute the request and get the response
+        // Execute the request and get the response
         try (CloseableHttpResponse response = httpClient.execute(httpMethod)) {
             // Get the response status code
             responseWrapper.setStatus(response.getCode());
@@ -89,15 +94,14 @@ public class HttpRequest {
             // Get the response entity
             HttpEntity responseEntity = response.getEntity();
             String responseBody = EntityUtils.toString(responseEntity);
-
             // Validate Json
             responseWrapper.setData(ValidateJson.validate(clz, responseBody));
 
         } catch (IOException | ParseException e) {
+            logger.error("Failed to execute request : " + httpMethod.getRequestUri() + "\n" + e);
             throw new RuntimeException(e);
         }
     }
-
 }
 
 
