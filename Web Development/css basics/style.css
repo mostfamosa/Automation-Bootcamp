@@ -1,0 +1,50 @@
+div {
+    background-color: gray;
+    width: fit-content;
+
+}
+
+span {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 15px;
+    margin-right: 15px;
+    padding: 5px;
+    display: inline-block;
+    border: 1px solid black;
+    vertical-align: middle;
+    border-radius: 2px;
+    box-shadow:5px 5px 5px rgb(255, 255, 255);
+}
+
+#first {
+    background-color: blue;
+}
+
+
+#first:hover {
+    background-color: red;
+}
+
+#second:hover {
+    background-color: blue;
+}
+
+#second {
+    background-color: red;
+}
+
+.prompt{
+    color: rgb(236, 147, 205);
+    font-weight: bold;
+}
+.button{
+    background-color: rgb(23, 221, 23);
+    
+}
+
+button:hover {
+    background-color: blue;
+    color: rgb(255, 255, 255);
+}
+
