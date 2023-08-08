@@ -1,0 +1,49 @@
+.arrow-game {
+    display: flex;
+    justify-content: center;
+}
+
+.arrow:hover {
+    background-color: blueviolet;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+}
+
+h2 {
+    color: blue;
+    text-align: center;
+}
+
+.reserve{
+    display: flex;
+    justify-content: center;
+}
+
+.form{
+    margin: 10px;
+    padding: 10px;
+    border: 3px solid green;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    background-color: aqua;
+}
+
+.nameSection .lastSection .phoneSection{
+    width: 100%;
+}
+
+.salarySection{
+   display: inline-block;
+}
+
+.birthdaySection{
+    display: inline-block;
+}
+
+#errorMsg{
+    color: red;
+}

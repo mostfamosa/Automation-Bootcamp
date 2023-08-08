@@ -1,3 +1,5 @@
+console.log("*****************\nObject Exe1:");
+
 let p1 = {
     name: "Jill",
     age: 26,
@@ -12,9 +14,9 @@ let p2 = {
 
 if(p1.age == p2.age){
     if(p1.city==p2.city){
-        console.log(p1.name+" wanted to date "+p2.name);
+        console.log(p1.name+" wanted to date "+p2.name)
     }
     else{
-        console.log(p1.name+" wanted to date "+p2.name+", but couldn't"); 
+        console.log(p1.name+" wanted to date "+p2.name+", but couldn't")
     }
 }

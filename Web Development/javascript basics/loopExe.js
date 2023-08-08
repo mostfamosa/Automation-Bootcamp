@@ -1,3 +1,5 @@
+
+console.log("*****************\nLoop Exe:");
 const names = ["Ashley", "Donovan", "Lucas"]
 const ages = [23, 47, 18]
 const people = []
@@ -20,10 +22,11 @@ const posts = [
     { id: 3, text: "So glad I found this. Bought four already!" }
 ]
 
-for (let i = 0; i < posts.length; i++) {
-    if (posts[i].id === 2) {
-        posts.splice(i, 1)
-    }
+for (p in posts) {
+    if (posts[p].id === 2)
+        posts.splice(p, 1)
 }
 
 console.log(posts);
+
+

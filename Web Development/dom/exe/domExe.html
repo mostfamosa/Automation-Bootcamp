@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>DOM EXE</title>
+</head>
+
+<body>
+    <h1 style="text-align: center;" class="title">DOM basics Exe</h1>
+    <hr><br><br><br>
+
+    <!-- Move The Ball Game  -->
+    <h2>Move The Ball Game</h2>
+    <div class="arrow-game">
+        <div onclick="moveLeft()" class="arrow" id="left-arrow"><img style="width: 100px;"
+                src="https://img.icons8.com/?size=512&id=12293&format=png" alt="left-arrow"></div>
+        <div onclick="moveRight()" class="arrow" id="right-arrow"><img style="width: 100px;"
+                src="https://img.icons8.com/?size=512&id=12958&format=png" alt="left-arrow"> </div>
+        <div onclick="moveUp()" class="arrow" id="up-arrow"><img style="width: 100px;"
+                src="https://img.icons8.com/?size=512&id=12956&format=png" alt="left-arrow"></div>
+        <div onclick="moveDown()" class="arrow" id="down-arrow"><img style="width: 100px;"
+                src="https://img.icons8.com/?size=512&id=12067&format=png" alt="left-arrow"></div>
+    </div>
+
+    <div class="item" id="item"><img style="width: 100px;"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Simple_Soccer_Ball.svg/2048px-Simple_Soccer_Ball.svg.png"
+            alt="ball"></div>
+    <hr>
+
+    <!-- Reservations  -->
+    <h2>Reservations</h2>
+    <div class="reserve">
+        <div class="prompt">Name:</div>
+        <input id="reserveName" type="text" placeholder="Your Name">
+        <button id="btnReservation" onclick="checkReservation()">Check Reservations</button>
+    </div>
+    <hr>
+
+    <!-- Visual Overload  -->
+    <h2>Visual Overload</h2>
+    <div id="container"></div>
+    <hr>
+
+    <!-- Form  -->
+    <h2>Form</h2>
+    <div id="formContainer" class="form">
+        <div id="form">
+
+            <div class="nameSection">
+                <label>First name:</label><br>
+                <input type="text" id="fname" name="fname"><br><br>
+            </div>
+            <div class="salarySection">
+                <label>Desired Salary</label><br>
+                <input type="number" id="salary" name="salary"><br><br>
+            </div>
+            <div class="birthdaySection">
+                <label>Birthday</label><br>
+                <input type="date" id="birthday" name="birthday"><br><br>
+            </div>
+            <div class="phoneSection">
+                <label>Phone</label><br>
+                <input type="tel" id="tel" name="tel"><br><br>
+            </div>
+            <div class="lastSection">
+                <label id="errorMsg"></label>
+                <input type="submit" onclick="validate()" value="Submit">
+            </div>
+
+
+        </div>
+
+    </div>
+    <hr>
+    <script src="main2.js"></script>
+</body>
+
+</html>

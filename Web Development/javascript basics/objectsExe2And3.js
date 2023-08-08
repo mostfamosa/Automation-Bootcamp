@@ -1,3 +1,5 @@
+console.log("*****************\nObject Exe2+3:");
+
 laibrary = {
     books: [
         {
@@ -23,11 +25,11 @@ const reservations = {
     ted: { claimed: true }
 }
 
-const name = prompt('Please enter the name for your reservation');
+const name = prompt('Please enter the name for your reservation')
 const lowerCaseName = name.toLowerCase()
 if (reservations[lowerCaseName] == undefined)
-    alert("Hello '" + lowerCaseName + "' There Is Nothing Under You Name!");
+    alert("Hello '" + lowerCaseName + "' There Is Nothing Under You Name!")
 else if (!reservations[lowerCaseName].claimed)
-    alert("Hello '" + lowerCaseName + "' Welcome To The Candy Shop!");
+    alert("Hello '" + lowerCaseName + "' Welcome To The Candy Shop!")
 else if (reservations[lowerCaseName].claimed)
-    alert("Hello '" + lowerCaseName + "' You Already Claimed!");
+    alert("Hello '" + lowerCaseName + "' You Already Claimed!")

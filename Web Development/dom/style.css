@@ -1,0 +1,16 @@
+.my-header{
+    background-color: aqua;
+    text-align: center;
+}
+.my-subHeader{
+    color:#27ae60;
+    text-shadow: 3px 1px 2px black;
+}
+
+#box{
+    background-color: #1abc9c;
+    line-height:20px;
+    text-align:center;
+    width: 150px;
+    padding: 20px;
+  }
