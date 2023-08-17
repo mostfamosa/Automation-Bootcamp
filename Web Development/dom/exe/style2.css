@@ -3,6 +3,10 @@
     justify-content: center;
 }
 
+.arrow-game-container{
+    background-color:white
+}
+
 .arrow:hover {
     background-color: blueviolet;
 }
@@ -10,6 +14,7 @@
 .item {
     display: flex;
     justify-content: center;
+    position: absolute;
 }
 
 h2 {
@@ -17,12 +22,17 @@ h2 {
     text-align: center;
 }
 
-.reserve{
+h4 {
+    color: blue;
+    text-align: center;
+}
+
+.reserve {
     display: flex;
     justify-content: center;
 }
 
-.form{
+.form {
     margin: 10px;
     padding: 10px;
     border: 3px solid green;
@@ -32,18 +42,18 @@ h2 {
     background-color: aqua;
 }
 
-.nameSection .lastSection .phoneSection{
+.nameSection .lastSection .phoneSection {
     width: 100%;
 }
 
-.salarySection{
-   display: inline-block;
-}
-
-.birthdaySection{
+.salarySection {
     display: inline-block;
 }
 
-#errorMsg{
+.birthdaySection {
+    display: inline-block;
+}
+
+.errorMsg {
     color: red;
 }

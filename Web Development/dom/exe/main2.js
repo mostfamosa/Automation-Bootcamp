@@ -1,33 +1,63 @@
 
 
 //Moving the ball game
+const ball = document.getElementById("item")
+ball.addEventListener("keydown", move)
+function move(e) {
+    let err = document.getElementById("errorMsg2")
+    err.style.display = "block"
+    err.style.textAlign = "center"
+    console.log(e.code)
+    switch (e.code) {
+        case "ArrowLeft":
+            moveLeft()
+            err.innerHTML = ""
+            break;
+        case "ArrowRight":
+            moveRight()
+            err.innerHTML = ""
+            break;
+        case "ArrowUp":
+            moveUp()
+            err.innerHTML = ""
+            break;
+        case "ArrowDown":
+            moveDown()
+            err.innerHTML = ""
+            break;
+        default:
+            err.innerHTML = "Try Using Only The Arrows Keys!"
+            break;
+    }
+}
+
 const moveRight = function () {
     const ball = document.getElementById("item")
-    let left = parseInt(ball.style.marginLeft) || 0
+    let left = parseInt(ball.style.left) || 0
     left += 15
-    ball.style.marginLeft = left + "px"
+    ball.style.left = left + "px"
 }
 
 const moveLeft = function () {
     const ball = document.getElementById("item")
-    let right = parseInt(ball.style.marginRight) || 0
-    right += 15
-    ball.style.marginRight = right + "px"
+    let right = parseInt(ball.style.left) || 0
+    right -= 15
+    ball.style.left = right + "px"
 }
 
 const moveUp = function () {
     const ball = document.getElementById("item")
-    let down = parseInt(ball.style.marginTop) || 0
-    down -= 15
-    ball.style.marginTop = down + "px"
+    let down = parseInt(ball.style.bottom) || 0
+    down += 15
+    ball.style.bottom = down + "px"
 }
 
 
 const moveDown = function () {
     const ball = document.getElementById("item")
-    let up = parseInt(ball.style.marginTop) || 0
-    up += 15
-    ball.style.marginTop = up + "px"
+    let up = parseInt(ball.style.bottom) || 0
+    up -= 15
+    ball.style.bottom = up + "px"
 }
 
 
@@ -73,7 +103,10 @@ function changeColor() {
     let r = Math.random() * 250;
     let g = Math.random() * 250;
     let b = Math.random() * 250;
-    box.style.backgroundColor = "rgb(" + r + "," + g + "," + b + ")"
+    //  r = g = b = 25
+    let currentColor = "rgb(" + r + ", " + g + ", " + b + ")"
+    box.style.backgroundColor = currentColor
+    checkColors(currentColor)
 }
 
 
@@ -91,6 +124,19 @@ for (let i = 0; i < 4; i++) {
     container.appendChild(box)
 }
 
+const checkColors = function (currentColor) {
+    const successLbl = document.getElementById("nice")
+    const boxes = []
+    for (let i = 0; i < 4; i++) {
+        boxes[i] = document.getElementById("box" + i).style.backgroundColor
+        if (boxes[i] != currentColor) {
+            successLbl.innerHTML = "Keep Trying!"
+            return;
+        }
+    }
+    successLbl.innerHTML = "Nice Job!"
+}
+
 
 /***********************************************/
 
@@ -103,7 +149,7 @@ function validate() {
     const birthday = document.getElementById("birthday").value
     const tel = document.getElementById("tel").value
     let err = document.getElementById("errorMsg")
-    err.style.color = "red"
+
     if (fname.length <= 2) {
         err.innerHTML = "Name must be longer than 2 characters!"
     }
@@ -125,7 +171,7 @@ function validate() {
         const h1 = document.createElement("h1")
         h1.style.color = "green"
         h1.style.textAlign = "center"
-        h1.innerHTML = "Hi "+fname+", Welcome!"
+        h1.innerHTML = "Hi " + fname + ", Welcome!"
         formContainer.appendChild(h1)
     }
 

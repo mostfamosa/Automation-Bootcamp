@@ -10,24 +10,32 @@
 
 <body>
     <h1 style="text-align: center;" class="title">DOM basics Exe</h1>
-    <hr><br><br><br>
+    <hr>
 
-    <!-- Move The Ball Game  -->
-    <h2>Move The Ball Game</h2>
-    <div class="arrow-game">
-        <div onclick="moveLeft()" class="arrow" id="left-arrow"><img style="width: 100px;"
-                src="https://img.icons8.com/?size=512&id=12293&format=png" alt="left-arrow"></div>
-        <div onclick="moveRight()" class="arrow" id="right-arrow"><img style="width: 100px;"
-                src="https://img.icons8.com/?size=512&id=12958&format=png" alt="left-arrow"> </div>
-        <div onclick="moveUp()" class="arrow" id="up-arrow"><img style="width: 100px;"
-                src="https://img.icons8.com/?size=512&id=12956&format=png" alt="left-arrow"></div>
-        <div onclick="moveDown()" class="arrow" id="down-arrow"><img style="width: 100px;"
-                src="https://img.icons8.com/?size=512&id=12067&format=png" alt="left-arrow"></div>
-    </div>
+    <div class="arrow-game-container">
+        <!-- Move The Ball Game  -->
+        <h2>Move The Ball Game</h2>
+        <h4>Use The Arrows To Move The Ball<br>Or Click On The Ball And Use The Keyboard Arrows</h4>
+        <label class="errorMsg" id="errorMsg2"></label>
+        <div class="arrow-game">
+            <div onclick="moveLeft()" class="arrow" id="left-arrow"><img style="width: 100px;"
+                    src="https://img.icons8.com/?size=512&id=12293&format=png" alt="left-arrow"></div>
+            <div onclick="moveRight()" class="arrow" id="right-arrow"><img style="width: 100px;"
+                    src="https://img.icons8.com/?size=512&id=12958&format=png" alt="left-arrow"> </div>
+            <div onclick="moveUp()" class="arrow" id="up-arrow"><img style="width: 100px;"
+                    src="https://img.icons8.com/?size=512&id=12956&format=png" alt="left-arrow"></div>
+            <div onclick="moveDown()" class="arrow" id="down-arrow"><img style="width: 100px;"
+                    src="https://img.icons8.com/?size=512&id=12067&format=png" alt="left-arrow"></div>
+        </div>
 
-    <div class="item" id="item"><img style="width: 100px;"
+        <input type="image" class="item" id="item" style="width: 50px; bottom: 540px;"
             src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Simple_Soccer_Ball.svg/2048px-Simple_Soccer_Ball.svg.png"
-            alt="ball"></div>
+            alt="ball">
+        <br><br><br>
+
+
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <hr>
 
     <!-- Reservations  -->
@@ -37,11 +45,15 @@
         <input id="reserveName" type="text" placeholder="Your Name">
         <button id="btnReservation" onclick="checkReservation()">Check Reservations</button>
     </div>
+    <br><br><br>
     <hr>
 
     <!-- Visual Overload  -->
     <h2>Visual Overload</h2>
     <div id="container"></div>
+    <br>
+    <h4 id="nice"></h4>
+    <br><br>
     <hr>
 
     <!-- Form  -->
@@ -66,14 +78,13 @@
                 <input type="tel" id="tel" name="tel"><br><br>
             </div>
             <div class="lastSection">
-                <label id="errorMsg"></label>
+                <label class="errorMsg" id="errorMsg"></label>
                 <input type="submit" onclick="validate()" value="Submit">
             </div>
-
-
         </div>
 
     </div>
+    <br><br><br>
     <hr>
     <script src="main2.js"></script>
 </body>
